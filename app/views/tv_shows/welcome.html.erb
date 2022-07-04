@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <h1 class="title d-flex justify-content-center">My Tv Series</h1>
+  </head>
+  <body>
+  <%= link_to "Administración", tv_shows_path %>
+    <section id="galeria" class="container">
+        <div class="tex-center pt-5" >
+        </div>
+        <div class=row>
+            <div class="col-lg-4">
+            <%= image_tag("agatha.jpg", alt: "Iron Man") %>
+            </div>
+            <div class="col-lg-4">
+            <%= image_tag("angry.jpg", alt: "Iron Man") %>
+            </div>
+            <div class="col-lg-4">
+            <%= image_tag("blande.jpg", alt: "Iron Man") %>
+            </div>
+            <div class="col-lg-4">
+            <%= image_tag("gameofthrones.jpg", alt: "Iron Man") %>
+            </div>
+            <div class="col-lg-4">
+            <%= image_tag("jaws.jpg", alt: "Iron Man") %>
+            </div>
+            <div class="col-lg-4">
+            <%= image_tag("Squid-Game.jpg", alt: "Iron Man") %>
+            </div>
+        </div>
+    </section>
+  </body>
+</html>

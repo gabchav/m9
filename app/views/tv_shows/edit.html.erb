@@ -1,0 +1,12 @@
+<header  class="title d-flex justify-content-center">
+<h1>Editing Tv Show</h1>
+</header>
+<nav class="title d-flex justify-content-center">
+
+<%= render "form", tv_show: @tv_show %>
+</nav>
+
+<footer>
+<%= link_to "Show", @tv_show %> |
+<%= link_to "Back", tv_shows_path %>
+</footer>

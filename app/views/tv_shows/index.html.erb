@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="title d-flex justify-content-center">
+    <h1>Tv Shows</h1>
+    </div>
+<%= link_to "Welcome", root_path %>
+<div class="row">
+<div class="table-responsive">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Imagen</th>
+      <th>Nombre</th>
+      <th>Sinopsis</th>
+      <th>Fecha de lanzamiento</th>
+      <th>Rating</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tv_shows.each do |tv_show| %>
+      <tr>
+        <td><%= image_tag(tv_show.ruta_img, title: tv_show.name, width: "80px") %></td>
+        <td><%= tv_show.name %></td>
+        <td><%= tv_show.summary %></td>
+        <td><%= tv_show.release_date %></td>
+        <td><%= tv_show.rating %></td>
+        <td><%= image_tag(url_for(tv_show.nationality.flag_img)) %></td>
+        
+        <% if user_signed_in? %>
+          <td>
+            <%= link_to (tv_show) do %>
+              <i class="material-icons">search</i>
+            <% end %></td>
+        <% end %>
+        <% if (user_signed_in? && (current_user == tv_show.user)) %>
+          <td>
+            <%= link_to about_tv_show_path(tv_show) do %>
+              <i class="material-icons">info</i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to edit_tv_show_path(tv_show) do %>
+              <i class="material-icons">edit_note</i>
+            <% end %>
+          </td>
+        <% elsif user_signed_in? && current_user.admin? %>
+          <td>
+            <%= link_to tv_show, method: :delete, data: { confirm: "¿Estás seguro?" } do %>
+              <i class="material-icons">delete</i>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<br>
+<%= paginate @tv_shows %>
+<br>
+<%= link_to "Nueva Serie", new_tv_show_path %> |
+<%= link_to "Buscar Serie", search_tv_shows_path %>

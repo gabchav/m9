@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyFavorite</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+<body>
+  <% if user_signed_in? %>
+      <div>
+          <p>Bienvenido <%= current_user.email %>!!</p>
+          <%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %>
+      </div>
+  <% else %>
+      <div style="text-align:right">
+          <%= link_to 'Registro', new_user_registration_path %> |
+          <%= link_to 'Ingresar', new_user_session_path %>
+      </div>
+  <% end %>
+  <%= yield %>
+</body>
+</html>
